@@ -1,5 +1,5 @@
-import { Place } from "../models/Place.model.js";
 import { User } from "../models/User.model.js";
+import { Place } from "../models/Place.model.js";
 
 export async function addplaces(req, res) {
   try {

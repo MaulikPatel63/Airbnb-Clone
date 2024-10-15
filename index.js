@@ -10,7 +10,7 @@ import placesRoutes from "./routes/places.route.js";
 import bookingsRoutes from "./routes/bookings.route.js";
 
 const app = express();
-const PORT = ENV_VARS.PORT;
+const PORT = ENV_VARS.PORT || 5000;
 
 app.use(express.json());
 app.use(cookieParser());
