@@ -19,7 +19,7 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/places", protectRoute, placesRoutes);
 app.use("/api/v1/bookings", protectRoute, bookingsRoutes);
 
-app.get('/api/test', (req,res) => {
+app.get('/', (req,res) => {
   res.json('test ok');
 });
 
