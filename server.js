@@ -19,6 +19,10 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/places", protectRoute, placesRoutes);
 app.use("/api/v1/bookings", protectRoute, bookingsRoutes);
 
+app.get('/api/test', (req,res) => {
+  res.json('test ok');
+});
+
 app.listen(PORT, () => {
   console.log("listening on port at http://localhost:" + PORT);
   connectDB();
