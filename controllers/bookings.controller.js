@@ -1,5 +1,5 @@
-import { User } from "../models/User.model.js";
-import { Booking } from "../models/Booking.model.js";
+import  Booking  from "../models/Booking.model.js";
+import  User  from "../models/User.model.js";
 
 export async function addbookings(req, res) {
   try {

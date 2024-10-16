@@ -1,5 +1,5 @@
-import { User } from "../models/User.model.js";
-import { Place } from "../models/Place.model.js";
+import User from "../models/User.model.js";
+import Place  from "../models/Place.model.js";
 
 export async function addplaces(req, res) {
   try {
@@ -18,18 +18,21 @@ export async function addplaces(req, res) {
 
     // Check for required fields
     if (
-      !title || 
-      !address || 
-      !description || 
-      !price || 
-      !perks || 
-      !checkIn || 
-      !checkOut || 
+      !title ||
+      !address ||
+      !description ||
+      !price ||
+      !perks ||
+      !checkIn ||
+      !checkOut ||
       !maxGuests
     ) {
       return res
         .status(400)
-        .json({ success: false, message: "All required fields must be provided" });
+        .json({
+          success: false,
+          message: "All required fields must be provided",
+        });
     }
 
     console.log("req.user:", req.user);
