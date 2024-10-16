@@ -1,7 +1,7 @@
-import jwt from "jsonwebtoken";
-import { ENV_VARS } from "../config/envVars.js";
+const jwt = require("jsonwebtoken");
+const { ENV_VARS } = require("../config/envVars.js");
 
-export const generateTokenAndSetCookie = (userId, res) => {
+const generateTokenAndSetCookie = (userId, res) => {
 	const token = jwt.sign({ userId }, ENV_VARS.JWT_SECRET, { expiresIn: "15d" });
 
 	res.cookie("jwt-airbnb", token, {
@@ -13,3 +13,5 @@ export const generateTokenAndSetCookie = (userId, res) => {
 
 	return token;
 };
+
+module.exports = generateTokenAndSetCookie;

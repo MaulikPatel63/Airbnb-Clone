@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const placeSchema = new mongoose.Schema({
   owner: {
@@ -46,6 +46,5 @@ const placeSchema = new mongoose.Schema({
   },
 });
 
-const Place =
-  mongoose.models.Place || mongoose.model("Place", placeSchema);
-  export default Place
+const Place = mongoose.models.Place || mongoose.model("Place", placeSchema);
+module.exports = Place;

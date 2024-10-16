@@ -1,8 +1,8 @@
-import jwt from "jsonwebtoken";
-import User from "../models/user.model.js";
-import { ENV_VARS } from "../config/envVars.js";
+const jwt = require("jsonwebtoken");
+const User = require("../models/user.model.js");
+const  ENV_VARS  = require("../config/envVars.js");
 
-export const protectRoute = async (req, res, next) => {
+const protectRoute = async (req, res, next) => {
   try {
     const token = req.cookies["jwt-airbnb"];
 
@@ -36,3 +36,5 @@ export const protectRoute = async (req, res, next) => {
     res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 };
+
+module.exports = protectRoute;

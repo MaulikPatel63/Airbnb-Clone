@@ -1,5 +1,8 @@
-import { Booking, User, Place } from "../models/index.model.js";
-export async function addbookings(req, res) {
+const User = require("../models/user.model.js");
+const Place = require("../models/place.model.js");
+const Booking = require("../models/Booking.model.js");
+
+async function addbookings(req, res) {
   try {
     const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
       req.body;
@@ -55,7 +58,7 @@ export async function addbookings(req, res) {
   }
 }
 
-export async function getbookings(req, res) {
+async function getbookings(req, res) {
   try {
     const userId = req.user.id; // Ensure the user ID is retrieved correctly
 
@@ -73,3 +76,5 @@ export async function getbookings(req, res) {
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 }
+
+module.exports = { addbookings, getbookings };

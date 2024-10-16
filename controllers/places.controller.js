@@ -1,6 +1,8 @@
-import { Booking, User, Place } from "../models/index.model.js";
+const User = require("../models/user.model.js");
+const Place = require("../models/place.model.js");
+const Booking = require("../models/Booking.model.js");
 
-export async function addplaces(req, res) {
+async function addplaces(req, res) {
   try {
     const {
       title,
@@ -26,12 +28,10 @@ export async function addplaces(req, res) {
       !checkOut ||
       !maxGuests
     ) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "All required fields must be provided",
-        });
+      return res.status(400).json({
+        success: false,
+        message: "All required fields must be provided",
+      });
     }
 
     console.log("req.user:", req.user);
@@ -76,7 +76,7 @@ export async function addplaces(req, res) {
   }
 }
 
-export async function getAllplaces(req, res) {
+async function getAllplaces(req, res) {
   try {
     const allPlaces = await Place.find();
 
@@ -100,7 +100,7 @@ export async function getAllplaces(req, res) {
   }
 }
 
-export async function getplaces(req, res) {
+async function getplaces(req, res) {
   try {
     const userPlaces = await Place.find({ owner: req.user.id });
 
@@ -124,7 +124,7 @@ export async function getplaces(req, res) {
   }
 }
 
-export async function getplacesbyid(req, res) {
+async function getplacesbyid(req, res) {
   try {
     const { id } = req.params;
 
@@ -156,3 +156,5 @@ export async function getplacesbyid(req, res) {
     });
   }
 }
+
+module.exports = { getplacesbyid, getplaces, getAllplaces, addplaces };

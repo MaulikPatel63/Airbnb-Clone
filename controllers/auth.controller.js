@@ -1,9 +1,11 @@
-import { Booking, User, Place } from "../models/index.model.js";
+const User = require("../models/user.model.js");
+const Place = require("../models/place.model.js");
+const Booking = require("../models/Booking.model.js");
 
-import bcryptjs from "bcryptjs";
-import { generateTokenAndSetCookie } from "../utils/generateToken.js";
+const bcryptjs = "bcryptjs";
+const generateTokenAndSetCookie  = "../utils/generateToken.js";
 
-export async function signup(req, res) {
+async  function signup(req, res) {
   try {
     const { email, password, username } = req.body;
 
@@ -72,7 +74,7 @@ export async function signup(req, res) {
   }
 }
 
-export async function login(req, res) {
+ async  function login(req, res) {
   try {
     const { email, password } = req.body;
 
@@ -112,7 +114,7 @@ export async function login(req, res) {
   }
 }
 
-export async function logout(req, res) {
+ async  function logout(req, res) {
   try {
     res.clearCookie("jwt-airbnb");
     res.status(200).json({ success: true, message: "Logged out successfully" });
@@ -122,7 +124,7 @@ export async function logout(req, res) {
   }
 }
 
-export async function authCheck(req, res) {
+ async  function authCheck(req, res) {
   try {
     console.log("req.user:", req.user);
     res.status(200).json({ success: true, user: req.user });
@@ -130,4 +132,8 @@ export async function authCheck(req, res) {
     console.log("Error in authCheck controller", error.message);
     res.status(500).json({ success: false, message: "Internal server error" });
   }
+}
+
+
+module.exports = {authCheck,logout,login,signup
 }
