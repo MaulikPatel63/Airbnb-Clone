@@ -1,5 +1,5 @@
 const express = require('express');
-const { addplaces, getAllplaces, getplaces, getplacesbyid } = require('../controllers/places.controller.js');
+const { addplaces, getAllplaces, getplaces, getplacesbyid } = require('@controllers/places.controller.js');
 
 const router = express.Router();
 
