@@ -1,4 +1,5 @@
-import User from "../models/user.model.js";
+import { Booking, User, Place } from "../models/index.model.js";
+
 import bcryptjs from "bcryptjs";
 import { generateTokenAndSetCookie } from "../utils/generateToken.js";
 

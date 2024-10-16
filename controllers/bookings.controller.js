@@ -1,6 +1,4 @@
-import  Booking  from "../models/Booking.model.js";
-import  User  from "../models/User.model.js";
-
+import { Booking, User, Place } from "../models/index.model.js";
 export async function addbookings(req, res) {
   try {
     const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
@@ -48,19 +46,20 @@ export async function addbookings(req, res) {
 
     await newBooking.save();
 
-    res.status(201).json({ success: true, message: "Booking added successfully" });
+    res
+      .status(201)
+      .json({ success: true, message: "Booking added successfully" });
   } catch (error) {
     console.error("Error in Add Bookings controller:", error.message);
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 }
 
-
 export async function getbookings(req, res) {
   try {
     const userId = req.user.id; // Ensure the user ID is retrieved correctly
 
-    const userBookings = await Booking.find({ user: userId }).populate('place'); // Fetch all bookings for the user
+    const userBookings = await Booking.find({ user: userId }).populate("place"); // Fetch all bookings for the user
 
     if (!userBookings || userBookings.length === 0) {
       return res
